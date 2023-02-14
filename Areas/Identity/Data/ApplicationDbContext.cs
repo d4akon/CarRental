@@ -1,4 +1,5 @@
 ﻿using CarRental.Areas.Identity.Data;
+using CarRental.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,12 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
         : base(options)
     {
     }
+
+    public DbSet<Car> Cars { get; set; }
+    public DbSet<Customer> Customers { get; set; }
+    public DbSet<Invoice> Invoices { get; set; }
+    public DbSet<Location> Locations { get; set; }
+    public DbSet<Reservation> Reservations { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
