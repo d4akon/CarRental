@@ -139,7 +139,8 @@ namespace CarRental.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
-
+                //TODO fix InvalidOperationException:
+                //Unable to resolve service for type 'CarRental.Controllers.CustomersController' while attempting to activate 'CarRental.Areas.Identity.Pages.Account.RegisterModel'.
                 await _customerController.Create(new Customer
                 {
                     FirstName = Input.FirstName,
