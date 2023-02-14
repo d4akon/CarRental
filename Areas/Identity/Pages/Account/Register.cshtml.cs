@@ -19,8 +19,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
-using CarRental.Services;
 using CarRental.Models;
+using CarRental.Controllers;
 
 namespace CarRental.Areas.Identity.Pages.Account
 {
@@ -32,7 +32,7 @@ namespace CarRental.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<ApplicationUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
-        private readonly CustomerService _customerService;
+        private readonly CustomersController _customerController;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
@@ -40,7 +40,7 @@ namespace CarRental.Areas.Identity.Pages.Account
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
-            CustomerService customerService)
+            CustomersController customerController)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -48,7 +48,7 @@ namespace CarRental.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
-            _customerService = customerService;
+            _customerController = customerController;
         }
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace CarRental.Areas.Identity.Pages.Account
             {
                 var user = CreateUser();
 
-                await _customerService.AddCustomerAsync(new Customer
+                await _customerController.Create(new Customer
                 {
                     FirstName = Input.FirstName,
                     LastName = Input.LastName,
@@ -148,7 +148,6 @@ namespace CarRental.Areas.Identity.Pages.Account
                     Phone = Input.Phone,
                     LicenseNumber = Input.LicenseNumber,
                     UserId = user.Id,
-                    User = user
                 });
 
                 await _userStore.SetUserNameAsync(user, Input.FirstName + Input.LastName, CancellationToken.None);
