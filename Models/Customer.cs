@@ -11,13 +11,12 @@ namespace CarRental.Models
         public string FirstName { get; set; }
         [Required]
         public string LastName { get; set; }
-        public string Email => User.Email ?? string.Empty;
+        public string Email { get; set; }
         [Required]
         public string Phone { get; set; }
         [Required]
         public string LicenseNumber { get; set; }
 
-        // Foreign key to User model
         public string UserId { get; set; }
         public virtual ApplicationUser User { get; set; }
     }
