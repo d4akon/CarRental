@@ -11,7 +11,6 @@ namespace CarRental.Models
         public string? FirstName { get; set; }
         [Required]
         public string? LastName { get; set; }
-        public string? Email { get; set; }
         [Required]
         public string? Phone { get; set; }
         [Required]

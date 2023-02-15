@@ -46,11 +46,11 @@ namespace CarRental.Services
 
         public bool IsCustomerValid(Customer customer)
         {
-            return customer.Email != null &&
-                customer.FirstName != null &&
+            return customer.FirstName != null &&
                 customer.LastName != null &&
                 customer.LicenseNumber != null &&
                 customer.Phone != null;
+
         }
 
     }

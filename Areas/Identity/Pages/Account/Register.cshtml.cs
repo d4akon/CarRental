@@ -162,7 +162,6 @@ namespace CarRental.Areas.Identity.Pages.Account
                     {
                         FirstName = Input.FirstName,
                         LastName = Input.LastName,
-                        Email = Input.Email,
                         Phone = Input.Phone,
                         LicenseNumber = Input.LicenseNumber,
                         UserId = user.Id,
