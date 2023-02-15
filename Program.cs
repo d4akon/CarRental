@@ -4,6 +4,7 @@ using CarRental.Data;
 using CarRental.Areas.Identity.Data;
 using CarRental.Interfaces;
 using CarRental.Services;
+using CarRental.Seed;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("ApplicationDbContextConnection") ?? throw new InvalidOperationException("Connection string 'ApplicationDbContextConnection' not found.");
@@ -21,6 +22,7 @@ builder.Services.AddScoped<ICarService, CarService>();
 builder.Services.AddScoped<IInvoiceService, InvoiceService>();
 builder.Services.AddScoped<ILocationService, LocationService>();
 builder.Services.AddScoped<IReservationService, ReservationService>();
+builder.Services.AddScoped<CarRentalSeeder>();
 
 var app = builder.Build();
 
@@ -34,6 +36,11 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+var scope = app.Services.CreateScope();
+var seeder = scope.ServiceProvider.GetRequiredService<CarRentalSeeder>();
+
+seeder.Seed();
 
 app.MapRazorPages();
 

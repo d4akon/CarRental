@@ -106,18 +106,22 @@ namespace CarRental.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
 
             [Display(Name = "First name")]
+            [Required]
             [StringLength(maximumLength: 30, MinimumLength = 1, ErrorMessage = "First name is either to long or to short")]
             public string FirstName { get; set; }
 
             [Display(Name = "Last name")]
+            [Required]
             [StringLength(maximumLength: 30, MinimumLength = 1, ErrorMessage = "Last name is either to long or to short")]
             public string LastName { get; set; }
 
             [Display(Name = "Phone number")]
-            [StringLength(maximumLength: 9, MinimumLength = 9, ErrorMessage = "Number is wrong")]
+            [Required]
+            [StringLength(maximumLength: 12, MinimumLength = 9, ErrorMessage = "Number is wrong")]
             public string Phone { get; set; }
 
             [Display(Name = "License number")]
+            [Required]
             [StringLength(maximumLength: 20, MinimumLength = 1, ErrorMessage = "License number is either to long or to short")]
             public string LicenseNumber { get; set; }
         }
