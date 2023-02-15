@@ -20,7 +20,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using CarRental.Models;
-using CarRental.Controllers;
+using CarRental.Services;
+using CarRental.Interfaces;
 
 namespace CarRental.Areas.Identity.Pages.Account
 {
@@ -32,7 +33,7 @@ namespace CarRental.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<ApplicationUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
-        private readonly CustomersController _customerController;
+        private readonly ICustomerService _customerService;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
@@ -40,7 +41,7 @@ namespace CarRental.Areas.Identity.Pages.Account
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
-            CustomersController customerController)
+            ICustomerService customerService)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -48,7 +49,7 @@ namespace CarRental.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
-            _customerController = customerController;
+            _customerService = customerService;
         }
 
         /// <summary>
@@ -105,22 +106,18 @@ namespace CarRental.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
 
             [Display(Name = "First name")]
-            [Required]
             [StringLength(maximumLength: 30, MinimumLength = 1, ErrorMessage = "First name is either to long or to short")]
             public string FirstName { get; set; }
 
             [Display(Name = "Last name")]
-            [Required]
             [StringLength(maximumLength: 30, MinimumLength = 1, ErrorMessage = "Last name is either to long or to short")]
             public string LastName { get; set; }
 
             [Display(Name = "Phone number")]
-            [Required]
             [StringLength(maximumLength: 9, MinimumLength = 9, ErrorMessage = "Number is wrong")]
             public string Phone { get; set; }
 
             [Display(Name = "License number")]
-            [Required]
             [StringLength(maximumLength: 20, MinimumLength = 1, ErrorMessage = "License number is either to long or to short")]
             public string LicenseNumber { get; set; }
         }
@@ -139,9 +136,7 @@ namespace CarRental.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
-                //TODO fix InvalidOperationException:
-                //Unable to resolve service for type 'CarRental.Controllers.CustomersController' while attempting to activate 'CarRental.Areas.Identity.Pages.Account.RegisterModel'.
-                await _customerController.Create(new Customer
+                await _customerService.AddCustomerAsync(new Customer
                 {
                     FirstName = Input.FirstName,
                     LastName = Input.LastName,
@@ -150,7 +145,7 @@ namespace CarRental.Areas.Identity.Pages.Account
                     LicenseNumber = Input.LicenseNumber,
                     UserId = user.Id,
                 });
-
+                
                 await _userStore.SetUserNameAsync(user, Input.FirstName + Input.LastName, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
