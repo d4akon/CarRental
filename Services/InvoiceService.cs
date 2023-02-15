@@ -9,10 +9,12 @@ namespace CarRental.Services
     public class InvoiceService : IInvoiceService
     {
         private readonly ApplicationDbContext _context;
+        private readonly ReservationService _reservationService;
 
-        public InvoiceService(ApplicationDbContext context)
+        public InvoiceService(ApplicationDbContext context, ReservationService reservationService)
         {
             _context = context;
+            _reservationService = reservationService;
         }
 
         public async Task<List<Invoice>> GetAllInvoicesAsync()
@@ -43,6 +45,21 @@ namespace CarRental.Services
                 _context.Invoices.Remove(dbInvoice);
                 await _context.SaveChangesAsync();
             }
+        }
+
+        public async Task GenerateInvoiceAsync(Reservation reservation)
+        {
+            var invoice = new Invoice()
+            {
+                ReservationId = reservation.Id,
+                Date = DateTime.Now,
+                Amount = reservation.TotalCost,
+                IsPaid = true
+            };
+
+            await AddInvoiceAsync(invoice);
+
+            _reservationService.SetIsPaid(reservation, true);
         }
     }
 }

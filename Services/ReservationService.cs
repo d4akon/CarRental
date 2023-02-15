@@ -44,6 +44,28 @@ namespace CarRental.Services
                 _context.SaveChanges();
             }
         }
+
+        public void SetIsPaid(Reservation reservation, bool isPaid)
+        {
+            if (!ReservaitonExists(reservation.Id))
+                return;
+
+            reservation.IsPaid = isPaid;
+
+            try
+            {
+                _context.Update(reservation);
+            }
+            catch
+            {
+
+            }
+        }
+
+        private bool ReservaitonExists(int id)
+        {
+            return (_context.Reservations?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
     }
 }
 

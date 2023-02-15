@@ -202,7 +202,7 @@ namespace CarRental.Seed
                     Name = "Beverly Hills Public Parking",
                     Address = "345 N Beverly Dr, Beverly Hills, CA 90210, United States",
                     Phone = "310-285-2467",
-                    Cars = new List<Car>()
+                    //Cars = new List<Car>()
                 },
 
                 new Location()
@@ -210,7 +210,7 @@ namespace CarRental.Seed
                     Name = "De Lacey Parking Facility",
                     Address = "45 S De Lacey Ave, Pasadena, CA 91105, United States",
                     Phone = "626-356-9725",
-                    Cars = new List<Car>()
+                    //Cars = new List<Car>()
                 },
 
                 new Location()
@@ -218,7 +218,7 @@ namespace CarRental.Seed
                     Name = "Balboa Park Parking",
                     Address = "2168 Pan American E Rd, San Diego, CA 92101, United States",
                     Phone = "619-293-3156",
-                    Cars = new List<Car>()
+                    //Cars = new List<Car>()
                 },
 
                 new Location()
@@ -226,7 +226,7 @@ namespace CarRental.Seed
                     Name = "American West Parking Services",
                     Address = "840 Sutter St, San Francisco, CA 94109, United States",
                     Phone = "415-596-8743",
-                    Cars = new List<Car>()
+                    //Cars = new List<Car>()
                 },
 
                 new Location()
@@ -234,7 +234,7 @@ namespace CarRental.Seed
                     Name = "California Parking",
                     Address = "199 Turk St, San Francisco, CA 94102, United States",
                     Phone = "415-4684-860",
-                    Cars = new List<Car>()
+                    //Cars = new List<Car>()
                 },
             };
 

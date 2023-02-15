@@ -44,6 +44,28 @@ namespace CarRental.Services
             }
 
         }
+
+        public void SetIsAvailable(Car car, bool isAvailable)
+        {
+            if (!CarExists(car.Id))
+                return;
+
+            car.IsAvailable = isAvailable;
+
+            try
+            {
+                _context.Update(car);
+            }
+            catch
+            {
+
+            }
+        }
+
+        private bool CarExists(int id)
+        {
+            return (_context.Cars?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
     }
 }
 

@@ -8,6 +8,6 @@
         public DateTime Date { get; set; }
         public decimal Amount { get; set; }
         public bool IsPaid { get; set; }
-        public virtual Reservation Reservation { get; set; }
+        public virtual Reservation? Reservation { get; set; }
     }
 }
