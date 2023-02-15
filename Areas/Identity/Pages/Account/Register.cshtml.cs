@@ -136,15 +136,6 @@ namespace CarRental.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
-                await _customerService.AddCustomerAsync(new Customer
-                {
-                    FirstName = Input.FirstName,
-                    LastName = Input.LastName,
-                    Email = Input.Email,
-                    Phone = Input.Phone,
-                    LicenseNumber = Input.LicenseNumber,
-                    UserId = user.Id,
-                });
                 
                 await _userStore.SetUserNameAsync(user, Input.FirstName + Input.LastName, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
@@ -162,6 +153,17 @@ namespace CarRental.Areas.Identity.Pages.Account
                         pageHandler: null,
                         values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
+
+                    await _customerService.AddCustomerAsync(new Customer
+                    {
+                        FirstName = Input.FirstName,
+                        LastName = Input.LastName,
+                        Email = Input.Email,
+                        Phone = Input.Phone,
+                        LicenseNumber = Input.LicenseNumber,
+                        UserId = user.Id,
+                    });
+
 
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");

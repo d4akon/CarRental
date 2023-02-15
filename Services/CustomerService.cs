@@ -26,7 +26,7 @@ namespace CarRental.Services
 
         public async Task AddCustomerAsync(Customer customer)
         {
-            if(customer != null)
+            if(IsCustomerValid(customer))
             {
                 await _context.Customers.AddAsync(customer);
                 await _context.SaveChangesAsync();
@@ -43,6 +43,16 @@ namespace CarRental.Services
                 await _context.SaveChangesAsync();
             }
         }
+
+        public bool IsCustomerValid(Customer customer)
+        {
+            return customer.Email != null &&
+                customer.FirstName != null &&
+                customer.LastName != null &&
+                customer.LicenseNumber != null &&
+                customer.Phone != null;
+        }
+
     }
 }
 
