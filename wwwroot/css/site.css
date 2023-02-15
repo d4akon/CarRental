@@ -23,7 +23,20 @@ body {
   color: white;
 }
 
-.form-control, .form-control:focus{
-    background: black;
+.form-control, .form-control:focus, .form-control:disabled{
+    background: black !important;
+    color: white !important;
+}
+
+#registerSubmit{
+    background: #056c17;
+}
+
+#login-submit{
+    background: #056c17;
+}
+
+.input-group-text{
+    background: #056c17;
     color: white;
 }
