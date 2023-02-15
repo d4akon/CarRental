@@ -9,12 +9,10 @@ namespace CarRental.Services
     public class InvoiceService : IInvoiceService
     {
         private readonly ApplicationDbContext _context;
-        private readonly ReservationService _reservationService;
 
-        public InvoiceService(ApplicationDbContext context, ReservationService reservationService)
+        public InvoiceService(ApplicationDbContext context)
         {
             _context = context;
-            _reservationService = reservationService;
         }
 
         public async Task<List<Invoice>> GetAllInvoicesAsync()
@@ -59,7 +57,7 @@ namespace CarRental.Services
 
             await AddInvoiceAsync(invoice);
 
-            _reservationService.SetIsPaid(reservation, true);
+            //_reservationService.SetIsPaid(reservation, true);
         }
     }
 }
