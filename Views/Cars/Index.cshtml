@@ -1,0 +1,68 @@
+﻿@model IEnumerable<CarRental.Models.Car>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Cars to rent</h1>
+
+<p>
+    <a class="details-buttonCreate btn" asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DailyRate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsAvailable)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                <span class="text-success">$</span> @Html.DisplayFor(modelItem => item.DailyRate)
+            </td>
+            <td>
+                @if(item.IsAvailable)
+                {
+                    <span class="text-success">Available</span>
+                }
+                else
+                {
+                    <span class="text-warning">Unavailable</span>
+                }
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="details-button w-20 btn">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" class="details-button w-20 btn">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id"class="w-20 btn-danger btn">Delete</a> |
+                @*<button type="submit" class="w-25 btn-success btn">Zarezerwuj</button>*@
+                <a asp-action="Create" asp-controller="Reservations" class="details-button w-20 btn">Reserve</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

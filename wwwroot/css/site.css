@@ -40,3 +40,24 @@ body {
     background: #056c17;
     color: white;
 }
+
+.table {
+    color: white;
+}
+
+.details-button{
+    background: #4800ff;
+    color: white;
+}
+
+.details-buttonCreate {
+    background: #0b1b6b;
+    color: white;
+    transition: .3s ease-out;
+}
+
+.details-buttonCreate:hover {
+    color: #fff;
+    text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa, 0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
+    transition: .3s ease-out;
+}
