@@ -19,4 +19,11 @@ html {
 
 body {
   margin-bottom: 60px;
+  background: #121212;
+  color: white;
+}
+
+.form-control, .form-control:focus{
+    background: black;
+    color: white;
 }
