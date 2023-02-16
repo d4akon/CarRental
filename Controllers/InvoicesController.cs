@@ -7,16 +7,23 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CarRental.Data;
 using CarRental.Models;
+using CarRental.Interfaces;
 
 namespace CarRental.Controllers
 {
     public class InvoicesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IInvoiceService _invoiceService;
+        private readonly ICarService _carService;
+        private readonly IReservationService _reservationService;
 
-        public InvoicesController(ApplicationDbContext context)
+        public InvoicesController(ApplicationDbContext context, IInvoiceService invoiceService, ICarService carService, IReservationService reservationService)
         {
+            _invoiceService = invoiceService;
             _context = context;
+            _carService = carService;
+            _reservationService = reservationService;
         }
 
         // GET: Invoices
@@ -24,6 +31,15 @@ namespace CarRental.Controllers
         {
             var applicationDbContext = _context.Invoices.Include(i => i.Reservation);
             return View(await applicationDbContext.ToListAsync());
+        }
+
+        public async Task<ActionResult> Generate(Reservation reservation)
+        {
+            await _invoiceService.GenerateInvoiceAsync(reservation);
+            _reservationService.SetIsPaid(reservation, true);
+            _carService.SetIsAvailable(_carService.GetCarByIdAsync(reservation.CarId).Result, true);
+
+            return View("Index");
         }
 
         // GET: Invoices/Details/5

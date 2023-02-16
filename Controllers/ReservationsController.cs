@@ -192,6 +192,9 @@ namespace CarRental.Controllers
                 return Problem("Entity set 'ApplicationDbContext.Reservations'  is null.");
             }
             var reservation = await _context.Reservations.FindAsync(id);
+
+            _carService.SetIsAvailable(_carService.GetCarByIdAsync(reservation.CarId).Result, true);
+
             if (reservation != null)
             {
                 _context.Reservations.Remove(reservation);
