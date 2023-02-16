@@ -60,7 +60,10 @@
                 <a asp-action="Details" asp-route-id="@item.Id" class="details-button w-20 btn">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id"class="w-20 btn-danger btn">Delete</a> |
                 @*<button type="submit" class="w-25 btn-success btn">Zarezerwuj</button>*@
-                <a asp-action="Create" asp-route-id="@item.Id" asp-controller="Reservations" class="details-button w-20 btn">Reserve</a>
+                @if (item.IsAvailable)
+                {
+                    <a asp-action="Create" asp-route-id="@item.Id" asp-controller="Reservations" class="details-button w-20 btn">Reserve</a>
+                }
             </td>
         </tr>
 }
