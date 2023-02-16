@@ -3,8 +3,8 @@ using CarRental.Models;
 
 namespace CarRental.Interfaces
 {
-	public interface ICustomerService
-	{
+    public interface ICustomerService
+    {
         Task<List<Customer>> GetAllCustomersAsync();
 
         Task<Customer> GetCustomerByIdAsync(int id);
@@ -14,6 +14,8 @@ namespace CarRental.Interfaces
         Task DeleteCustomerAsync(Customer customer);
 
         bool IsCustomerValid(Customer customer);
+
+        Task<Customer> GetCustomerByUserGuidAsync(string guid);
     }
 }
 

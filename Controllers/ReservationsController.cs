@@ -7,19 +7,24 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CarRental.Data;
 using CarRental.Models;
-using CarRental.Services;
+using CarRental.Interfaces;
+using Microsoft.AspNetCore.Identity;
+using CarRental.Areas.Identity.Data;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace CarRental.Controllers
 {
     public class ReservationsController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly CarService _carService;
+        private readonly ICarService _carService;
+        private readonly ICustomerService _customerService;
 
-        public ReservationsController(ApplicationDbContext context, CarService carService)
+        public ReservationsController(ApplicationDbContext context, ICarService carService, ICustomerService customerService)
         {
             _context = context;
             _carService = carService;
+            _customerService = customerService;
         }
 
         // GET: Reservations
@@ -52,28 +57,41 @@ namespace CarRental.Controllers
         }
 
         // GET: Reservations/Create
-        public IActionResult Create()
+        public IActionResult Create(int id)
         {
-            ViewData["CarId"] = new SelectList(_context.Cars, "Id", "Brand");
-            ViewData["CustomerId"] = new SelectList(_context.Customers, "Id", "FirstName");
-            ViewData["PickupLocationId"] = new SelectList(_context.Locations, "Id", "Id");
-            ViewData["ReturnLocationId"] = new SelectList(_context.Locations, "Id", "Id");
+            var userName = User.Identity.Name;
+            var user = _context.Users.FirstOrDefault(u => u.UserName == userName);
+            var car = _carService.GetCarByIdAsync(id).Result;
+            var customer = _customerService.GetCustomerByUserGuidAsync(user.Id).Result;
+            ViewData["PickupLocation"] = new SelectList(_context.Locations, "Id", "Name");
+            ViewData["ReturnLocation"] = new SelectList(_context.Locations, "Id", "Name");
+            ViewData["CarName"] = car.Brand + " " + car.Model;
+            ViewData["CarYear"] = car.Year;
+            ViewData["DailyRate"] = car.DailyRate;
             return View();
         }
+
+
 
         // POST: Reservations/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,CarId,CustomerId,PickupLocationId,ReturnLocationId,PickupDate,ReturnDate,TotalCost,IsPaid")] Reservation reservation)
+        public async Task<IActionResult> Create([Bind("Id,CarId,CustomerId,PickupLocationId,ReturnLocationId,PickupDate,ReturnDate,TotalCost,IsPaid")] Reservation reservation, int id)
         {
+            var userName = User.Identity.Name;
+            var user = _context.Users.FirstOrDefault(u => u.UserName == userName);
+            var car = _carService.GetCarByIdAsync(id).Result;
+            var customer = _customerService.GetCustomerByUserGuidAsync(user.Id).Result;
+            reservation.CustomerId = customer.Id;
+            reservation.CarId = car.Id;
+
             if (ModelState.IsValid)
             {
                 _context.Add(reservation);
                 await _context.SaveChangesAsync();
-                //todo uncomment when ready
-                //_carService.SetIsAvailable(reservation.Car, false);
+                _carService.SetIsAvailable(reservation.Car, false);
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CarId"] = new SelectList(_context.Cars, "Id", "Brand", reservation.CarId);

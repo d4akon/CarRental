@@ -10,23 +10,16 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
+        <input type="hidden" name="carId" value="@ViewBag.CarId" />
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group mb-3">
-                <label asp-for="CarId" class="control-label"></label>
-                <select asp-for="CarId" class ="form-control" asp-items="ViewBag.CarId"></select>
-            </div>
-            <div class="form-group mb-3">
-                <label asp-for="CustomerId" class="control-label"></label>
-                <select asp-for="CustomerId" class ="form-control" asp-items="ViewBag.CustomerId"></select>
-            </div>
-            <div class="form-group mb-3">
                 <label asp-for="PickupLocationId" class="control-label"></label>
-                <select asp-for="PickupLocationId" class ="form-control" asp-items="ViewBag.PickupLocationId"></select>
+                <select asp-for="PickupLocationId" class ="form-control" asp-items="ViewBag.PickupLocation"></select>
             </div>
             <div class="form-group mb-3">
                 <label asp-for="ReturnLocationId" class="control-label"></label>
-                <select asp-for="ReturnLocationId" class ="form-control" asp-items="ViewBag.ReturnLocationId"></select>
+                <select asp-for="ReturnLocationId" class ="form-control" asp-items="ViewBag.ReturnLocation"></select>
             </div>
             <div class="form-group mb-3">
                 <label asp-for="PickupDate" class="control-label"></label>
@@ -39,18 +32,15 @@
                 <span asp-validation-for="ReturnDate" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
-                <label asp-for="TotalCost" class="control-label"></label>
-                <input asp-for="TotalCost" class="form-control" />
-                <span asp-validation-for="TotalCost" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check mb-3">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsPaid" /> @Html.DisplayNameFor(model => model.IsPaid)
-                </label>
+                <h1>@ViewBag.CarName</h1>
             </div>
             <div class="form-group mb-3">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <h1>@ViewBag.CarYear</h1>
             </div>
+            <div class="form-group mb-3">
+                <h1>@ViewBag.DailyRate</h1>
+            </div>
+
         </form>
     </div>
 </div>

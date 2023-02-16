@@ -24,6 +24,11 @@ namespace CarRental.Services
             return await _context.Customers.SingleOrDefaultAsync(c => c.Id == id) ?? new Customer();
         }
 
+        public async Task<Customer> GetCustomerByUserGuidAsync(string guid)
+        {
+            return await _context.Customers.SingleOrDefaultAsync(c => c.UserId == guid) ?? new Customer();
+        }
+
         public async Task AddCustomerAsync(Customer customer)
         {
             if(IsCustomerValid(customer))
