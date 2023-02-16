@@ -63,6 +63,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ReturnLocation.Name)
             </td>
+            <td>
+                <a asp-action="Create" class="btn-success w-10 btn">Generate Invoice</a>
+            </td>
         </tr>
 }
     </tbody>
