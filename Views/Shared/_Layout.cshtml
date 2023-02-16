@@ -24,6 +24,29 @@
                             <li class="nav-item">
                                 <a class="nav-link text-light" asp-area="" asp-controller="Cars" asp-action="Index">Cars</a>
                             </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Reservations" asp-action="IndexByUserId">Reservations</a>
+                            </li>
+                        }
+        
+                        @if (User.IsInRole("Administrators"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Reservations" asp-action="Index">Reservations</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Customers" asp-action="Index">Customers</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Invoices" asp-action="Index">Invoices</a>
+                            </li
+
+                             <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Locations" asp-action="Index">Locations</a>
+                            </li>
                         }
                         </ul>
                         <partial name="_LoginPartial" />

@@ -34,6 +34,16 @@ namespace CarRental.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
+        // GET: Reservations/5
+        public async Task<IActionResult> IndexByUserId()
+        {
+            var user = _context.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
+            var customer = _customerService.GetCustomerByUserGuidAsync(user.Id).Result;
+
+            var applicationDbContext = _context.Reservations.Include(r => r.Car).Include(r => r.Customer).Include(r => r.PickupLocation).Include(r => r.ReturnLocation).Where(r => r.CustomerId == customer.Id);
+            return View(await applicationDbContext.ToListAsync());
+        }
+
         // GET: Reservations/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -59,8 +69,7 @@ namespace CarRental.Controllers
         // GET: Reservations/Create
         public IActionResult Create(int id)
         {
-            var userName = User.Identity.Name;
-            var user = _context.Users.FirstOrDefault(u => u.UserName == userName);
+            var user = _context.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
             var car = _carService.GetCarByIdAsync(id).Result;
             var customer = _customerService.GetCustomerByUserGuidAsync(user.Id).Result;
             ViewData["PickupLocation"] = new SelectList(_context.Locations, "Id", "Name");
@@ -80,24 +89,25 @@ namespace CarRental.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,CarId,CustomerId,PickupLocationId,ReturnLocationId,PickupDate,ReturnDate,TotalCost,IsPaid")] Reservation reservation, int id)
         {
-            var userName = User.Identity.Name;
-            var user = _context.Users.FirstOrDefault(u => u.UserName == userName);
+            var user = _context.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
             var car = _carService.GetCarByIdAsync(id).Result;
             var customer = _customerService.GetCustomerByUserGuidAsync(user.Id).Result;
             reservation.CustomerId = customer.Id;
             reservation.CarId = car.Id;
+            reservation.Id = 0;
+            reservation.SetTotalCost(car.DailyRate);
 
             if (ModelState.IsValid)
             {
+                _carService.SetIsAvailable(car, false);
                 _context.Add(reservation);
                 await _context.SaveChangesAsync();
-                _carService.SetIsAvailable(reservation.Car, false);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(IndexByUserId));
             }
             ViewData["CarId"] = new SelectList(_context.Cars, "Id", "Brand", reservation.CarId);
             ViewData["CustomerId"] = new SelectList(_context.Customers, "Id", "FirstName", reservation.CustomerId);
-            ViewData["PickupLocationId"] = new SelectList(_context.Locations, "Id", "Id", reservation.PickupLocationId);
-            ViewData["ReturnLocationId"] = new SelectList(_context.Locations, "Id", "Id", reservation.ReturnLocationId);
+            ViewData["PickupLocationId"] = new SelectList(_context.Locations, "Name", "Name", reservation.PickupLocationId);
+            ViewData["ReturnLocationId"] = new SelectList(_context.Locations, "Name", "Name", reservation.ReturnLocationId);
             return View(reservation);
         }
 
@@ -192,6 +202,9 @@ namespace CarRental.Controllers
                 return Problem("Entity set 'ApplicationDbContext.Reservations'  is null.");
             }
             var reservation = await _context.Reservations.FindAsync(id);
+
+            _carService.SetIsAvailable(_carService.GetCarByIdAsync(reservation.CarId).Result, true);
+
             if (reservation != null)
             {
                 _context.Reservations.Remove(reservation);
