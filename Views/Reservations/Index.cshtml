@@ -61,10 +61,10 @@
                 @Html.DisplayFor(modelItem => item.Customer.FirstName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PickupLocation.Id)
+                @Html.DisplayFor(modelItem => item.PickupLocation.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ReturnLocation.Id)
+                @Html.DisplayFor(modelItem => item.ReturnLocation.Name)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
