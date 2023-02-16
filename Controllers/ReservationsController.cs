@@ -7,16 +7,19 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CarRental.Data;
 using CarRental.Models;
+using CarRental.Services;
 
 namespace CarRental.Controllers
 {
     public class ReservationsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly CarService _carService;
 
-        public ReservationsController(ApplicationDbContext context)
+        public ReservationsController(ApplicationDbContext context, CarService carService)
         {
             _context = context;
+            _carService = carService;
         }
 
         // GET: Reservations
@@ -69,6 +72,8 @@ namespace CarRental.Controllers
             {
                 _context.Add(reservation);
                 await _context.SaveChangesAsync();
+                //todo uncomment when ready
+                //_carService.SetIsAvailable(reservation.Car, false);
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CarId"] = new SelectList(_context.Cars, "Id", "Brand", reservation.CarId);
