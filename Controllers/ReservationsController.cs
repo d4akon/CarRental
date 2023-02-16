@@ -34,6 +34,16 @@ namespace CarRental.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
+        // GET: Reservations/5
+        public async Task<IActionResult> IndexByUserId()
+        {
+            var user = _context.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
+            var customer = _customerService.GetCustomerByUserGuidAsync(user.Id).Result;
+
+            var applicationDbContext = _context.Reservations.Include(r => r.Car).Include(r => r.Customer).Include(r => r.PickupLocation).Include(r => r.ReturnLocation).Where(r => r.CustomerId == customer.Id);
+            return View(await applicationDbContext.ToListAsync());
+        }
+
         // GET: Reservations/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -92,7 +102,7 @@ namespace CarRental.Controllers
                 _carService.SetIsAvailable(car, false);
                 _context.Add(reservation);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(IndexByUserId));
             }
             ViewData["CarId"] = new SelectList(_context.Cars, "Id", "Brand", reservation.CarId);
             ViewData["CustomerId"] = new SelectList(_context.Customers, "Id", "FirstName", reservation.CustomerId);
