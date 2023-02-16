@@ -56,8 +56,6 @@ namespace CarRental.Services
             };
 
             await AddInvoiceAsync(invoice);
-
-            //_reservationService.SetIsPaid(reservation, true);
         }
     }
 }

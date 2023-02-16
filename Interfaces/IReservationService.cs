@@ -12,6 +12,8 @@ namespace CarRental.Interfaces
         Task AddReservationAsync(Reservation reservation);
 
         Task DeleteReservationAsync(Reservation reservation);
+
+        void SetIsPaid(Reservation reservation, bool isPaid);
     }
 }
 

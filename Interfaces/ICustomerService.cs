@@ -12,6 +12,8 @@ namespace CarRental.Interfaces
         Task AddCustomerAsync(Customer customer);
 
         Task DeleteCustomerAsync(Customer customer);
+
+        bool IsCustomerValid(Customer customer);
     }
 }
 

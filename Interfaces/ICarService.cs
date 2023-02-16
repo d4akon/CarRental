@@ -12,6 +12,8 @@ namespace CarRental.Interfaces
 		Task AddCarAsync(Car car);
 
 		Task DeleteCarAsync(Car car);
+
+		void SetIsAvailable(Car car, bool isAvailable);
     }
 }
 

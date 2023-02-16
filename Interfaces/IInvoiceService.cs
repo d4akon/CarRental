@@ -12,6 +12,8 @@ namespace CarRental.Interfaces
         Task AddInvoiceAsync(Invoice invoice);
 
         Task DeleteInvoiceAsync(Invoice invoice);
+
+        Task GenerateInvoiceAsync(Reservation reservation);
     }
 }
 
