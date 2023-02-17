@@ -48,7 +48,7 @@
                 @Html.DisplayFor(modelItem => item.Year)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ImageUrl)
+                <img src="@item.ImageUrl"/>
             </td>
             <td>
                 <span class="text-success">$</span> @Html.DisplayFor(modelItem => item.DailyRate)
