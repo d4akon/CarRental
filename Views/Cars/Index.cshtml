@@ -24,13 +24,13 @@
             <th>
                 @Html.DisplayNameFor(model => model.Year)
             </th>
-            <th>
+            <th width="400px">
                 @Html.DisplayNameFor(model => model.ImageUrl)
             </th>
-            <th>
+            <th width="150px">
                 @Html.DisplayNameFor(model => model.DailyRate)
             </th>
-            <th>
+            <th width="120px">
                 @Html.DisplayNameFor(model => model.IsAvailable)
             </th>
         </tr>
@@ -48,7 +48,7 @@
                 @Html.DisplayFor(modelItem => item.Year)
             </td>
             <td>
-                <img src="@item.ImageUrl"/>
+                <img src="@item.ImageUrl" class="details-carslist"/>
             </td>
             <td>
                 <span class="text-success">$</span> @Html.DisplayFor(modelItem => item.DailyRate)

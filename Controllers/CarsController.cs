@@ -90,7 +90,7 @@ namespace CarRental.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Brand,Model,Year,DailyRate,IsAvailable")] Car car)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Brand,Model,Year,DailyRate,IsAvailable,ImageUrl")] Car car)
         {
             if (id != car.Id)
             {

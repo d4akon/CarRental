@@ -30,23 +30,28 @@
             </div>
             <div class="form-group">
                 <label asp-for="DailyRate" class="control-label"></label>
-                <input asp-for="DailyRate" class="form-control" />
+                <input asp-for="DailyRate" class="form-control" step="0.01"/>
                 <span asp-validation-for="DailyRate" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
+            <div class="form-group mb-3">
+                <label asp-for="ImageUrl" class="control-label"></label>
+                <input asp-for="ImageUrl" class="form-control" />
+                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check mb-3">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="IsAvailable" /> @Html.DisplayNameFor(model => model.IsAvailable)
                 </label>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-success mb-3" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a class="w-20 btn-danger btn" asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

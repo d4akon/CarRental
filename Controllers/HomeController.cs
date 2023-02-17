@@ -46,7 +46,7 @@ namespace CarRental.Controllers
             var rand = new Random();
             List<int> listNumbers = new List<int>();
             int number;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 6; i++)
             {
                 do
                 {

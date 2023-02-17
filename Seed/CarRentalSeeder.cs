@@ -50,7 +50,7 @@ namespace CarRental.Seed
 					Brand = "Mazda",
 					Model = "B4000",
 					Year = 2002,
-					DailyRate = 23.5m,
+					DailyRate = 23,
 					IsAvailable = true,
                     ImageUrl = "https://cdn.jdpower.com/ChromeImageGallery/Expanded/Transparent/640/2008MAZ001a_640/2008MAZ001a_640_01.png"
                 },
@@ -60,7 +60,7 @@ namespace CarRental.Seed
                     Brand = "BMW",
                     Model = "Z4",
                     Year = 2005,
-                    DailyRate = 30.2m,
+                    DailyRate = 30,
                     IsAvailable = true,
                     ImageUrl = "https://cdn.jdpower.com/ChromeImageGallery/Expanded/Transparent/640/2008BMW010b_640/2008BMW010b_640_01.png"
                 },
@@ -70,7 +70,7 @@ namespace CarRental.Seed
                     Brand = "Porsche",
                     Model = "911",
                     Year = 2006,
-                    DailyRate = 56.7m,
+                    DailyRate = 56,
                     IsAvailable = true,
                     ImageUrl = "https://cdn.jdpower.com/ChromeImageGallery/Expanded/Transparent/640/2015POR001c_640/2015POR001c_640_01.png"
                 },
@@ -80,7 +80,7 @@ namespace CarRental.Seed
                     Brand = "Kia",
                     Model = "Rio",
                     Year = 2001,
-                    DailyRate = 33.7m,
+                    DailyRate = 33,
                     IsAvailable = true,
                     ImageUrl = "https://platform.cstatic-images.com/xlarge/in/v2/stock_photos/0f44ed25-68a1-4073-8b27-ea77bf2d5603/dff65fdf-b4e2-4b92-9a5d-161960d582d0.png"
 
@@ -91,7 +91,7 @@ namespace CarRental.Seed
                     Brand = "Mercedes-Benz",
                     Model = " E63 AMG",
                     Year = 2010,
-                    DailyRate = 52.4m,
+                    DailyRate = 52,
                     IsAvailable = true,
                     ImageUrl = "https://cdn.jdpower.com/ChromeImageGallery/Expanded/Transparent/640/2010MEB005a_640/2010MEB005a_640_01.png"
 
@@ -102,7 +102,7 @@ namespace CarRental.Seed
                     Brand = "Chevrolet",
                     Model = "Tahoe",
                     Year = 2008,
-                    DailyRate = 31.6m,
+                    DailyRate = 31,
                     IsAvailable = true,
                     ImageUrl = "https://cdn.jdpower.com/ChromeImageGallery/Expanded/Transparent/640/2008CHE018a_640/2008CHE018a_640_01.png"
                 },
@@ -112,7 +112,7 @@ namespace CarRental.Seed
                     Brand = "Audi",
                     Model = "S4",
                     Year = 2008,
-                    DailyRate = 36.2m,
+                    DailyRate = 36,
                     IsAvailable = true,
                     ImageUrl = "https://cdn.jdpower.com/ChromeImageGallery/Expanded/Transparent/640/2008AUD009a_640/2008AUD009a_640_01.png"
                 },
@@ -122,7 +122,7 @@ namespace CarRental.Seed
                     Brand = "Chevrolet",
                     Model = "Suburban 2500",
                     Year = 2021,
-                    DailyRate = 32.2m,
+                    DailyRate = 32,
                     IsAvailable = true,
                     ImageUrl = "https://s3.us-east-2.amazonaws.com/dealer-inspire-vps-vehicle-images/stock-images/chrome/96f302f03f100dbdf37598e1e69ee4d5.png"
                 },
@@ -132,7 +132,7 @@ namespace CarRental.Seed
                     Brand = "Nissan",
                     Model = "Maxima",
                     Year = 2003,
-                    DailyRate = 31.3m,
+                    DailyRate = 31,
                     IsAvailable = true,
                     ImageUrl = "https://cdn.jdpower.com/ChromeImageGallery/Expanded/Transparent/640/2008NIS007a_640/2008NIS007a_640_01.png"
                 },
@@ -142,9 +142,9 @@ namespace CarRental.Seed
                     Brand = "Toyota",
                     Model = "Tundra",
                     Year = 2005,
-                    DailyRate = 35.4m,
+                    DailyRate = 35,
                     IsAvailable = true,
-                    ImageUrl = "https://d1ypc8j62c29y8.cloudfront.net/fullsize/5/7/9/796e9ba912ae6ea0a3bed745a1814b0c20889975.png"
+                    ImageUrl = "https://images.iconfigurators.app/images/vehicles/reference/Toyota-Tundra-SR5-TRD-Crew-Max-Short-Bed-2003_2006.png"
                 },
 
                 new Car()
@@ -152,7 +152,7 @@ namespace CarRental.Seed
                     Brand = "Nissan",
                     Model = "Armada",
                     Year = 2012,
-                    DailyRate = 30.0m,
+                    DailyRate = 23,
                     IsAvailable = true,
                     ImageUrl = "https://www.cars.com/i/large/in/v2/stock_photos/132b8433-c329-44b4-8516-6687a820147b/7450a15f-a181-474f-bd45-138f65c7a146.png"
                 },
@@ -162,9 +162,9 @@ namespace CarRental.Seed
                     Brand = "Acura",
                     Model = "MDX",
                     Year = 2012,
-                    DailyRate = 42.1m,
+                    DailyRate = 42,
                     IsAvailable = true,
-                    ImageUrl = "https://cdn.jdpower.com/Models/640x480/2012-Acura-MDX-AdvancePkg.jpg"
+                    ImageUrl = "https://cdn.jdpower.com/ChromeImageGallery/Expanded/Transparent/640/2012ACU001a_640/2012ACU001a_640_01.png"
                 },
 
                 new Car()
@@ -172,7 +172,7 @@ namespace CarRental.Seed
                     Brand = "Mitsubishi",
                     Model = "Outlander",
                     Year = 2014,
-                    DailyRate = 38.8m,
+                    DailyRate = 38,
                     IsAvailable = true,
                     ImageUrl = "https://cdn.jdpower.com/ChromeImageGallery/Expanded/Transparent/640/2014MIT005a_640/2014MIT005a_640_01.png"
                 },
@@ -182,9 +182,9 @@ namespace CarRental.Seed
                     Brand = "Volkswagen",
                     Model = "Tiguan",
                     Year = 2021,
-                    DailyRate = 41.4m,
+                    DailyRate = 41,
                     IsAvailable = true,
-                    ImageUrl = "https://cdn.jdpower.com/Models/640x480/2021-Volkswagen-Tiguan-SELPremiumR-Line.jpg"
+                    ImageUrl = "https://65e81151f52e248c552b-fe74cd567ea2f1228f846834bd67571e.ssl.cf1.rackcdn.com/ldm-images/2021-Volkswagen-Tiguan-hero.png"
                 },
 
                 new Car()
@@ -192,7 +192,7 @@ namespace CarRental.Seed
                     Brand = "Audi",
                     Model = "TT",
                     Year = 2014,
-                    DailyRate = 45.8m,
+                    DailyRate = 45,
                     IsAvailable = true,
                     ImageUrl = "https://cdn.jdpower.com/ChromeImageGallery/Expanded/Transparent/640/2014AUD013a_640/2014AUD013a_640_01.png"
                 },

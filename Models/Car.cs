@@ -14,8 +14,11 @@ namespace CarRental.Models
         [Required]
         public int Year { get; set; }
         [Required]
-        public decimal DailyRate { get; set; }
+        [Display(Name = "Price per day")]
+        public int DailyRate { get; set; }
+        [Display(Name = "Is Available")]
         public bool IsAvailable { get; set; }
+        [Display(Name = "Image of a car")]
         public string? ImageUrl { get; set; }
     }
 }
