@@ -11,6 +11,7 @@
          <li>Run the following command in the Package Manager Console to create the database: Update-Database</li>
          <li>The database will be created and seeded with sample data. You can check the tables in the SQL Server Object Explorer to verify that the database has been created successfully.</li>
          <li>Build the project and run it in the browser to verify that the application is working correctly.</li>
+         <li>Test user creditials email: admin@rental.com password: Passw0rd.</li>
       </ol>
       With these steps, you should be able to install the Car Rental project on your local machine with a SQL Server database using Entity Framework.
       <h2>Project Structure</h2>
