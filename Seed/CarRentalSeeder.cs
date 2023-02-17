@@ -51,8 +51,9 @@ namespace CarRental.Seed
 					Model = "B4000",
 					Year = 2002,
 					DailyRate = 23.5m,
-					IsAvailable = true
-				},
+					IsAvailable = true,
+                    ImageUrl = "https://cdn.jdpower.com/ChromeImageGallery/Expanded/Transparent/640/2008MAZ001a_640/2008MAZ001a_640_01.png"
+                },
 
                 new Car()
                 {
@@ -60,7 +61,8 @@ namespace CarRental.Seed
                     Model = "Z4",
                     Year = 2005,
                     DailyRate = 30.2m,
-                    IsAvailable = true
+                    IsAvailable = true,
+                    ImageUrl = "https://cdn.jdpower.com/ChromeImageGallery/Expanded/Transparent/640/2008BMW010b_640/2008BMW010b_640_01.png"
                 },
 
                 new Car()
@@ -69,7 +71,8 @@ namespace CarRental.Seed
                     Model = "911",
                     Year = 2006,
                     DailyRate = 56.7m,
-                    IsAvailable = true
+                    IsAvailable = true,
+                    ImageUrl = "https://cdn.jdpower.com/ChromeImageGallery/Expanded/Transparent/640/2015POR001c_640/2015POR001c_640_01.png"
                 },
 
                 new Car()
@@ -78,7 +81,9 @@ namespace CarRental.Seed
                     Model = "Rio",
                     Year = 2001,
                     DailyRate = 33.7m,
-                    IsAvailable = true
+                    IsAvailable = true,
+                    ImageUrl = "https://platform.cstatic-images.com/xlarge/in/v2/stock_photos/0f44ed25-68a1-4073-8b27-ea77bf2d5603/dff65fdf-b4e2-4b92-9a5d-161960d582d0.png"
+
                 },
 
                 new Car()
@@ -87,7 +92,9 @@ namespace CarRental.Seed
                     Model = " E63 AMG",
                     Year = 2010,
                     DailyRate = 52.4m,
-                    IsAvailable = true
+                    IsAvailable = true,
+                    ImageUrl = "https://cdn.jdpower.com/ChromeImageGallery/Expanded/Transparent/640/2010MEB005a_640/2010MEB005a_640_01.png"
+
                 },
 
                 new Car()
@@ -96,7 +103,8 @@ namespace CarRental.Seed
                     Model = "Tahoe",
                     Year = 2008,
                     DailyRate = 31.6m,
-                    IsAvailable = true
+                    IsAvailable = true,
+                    ImageUrl = "https://cdn.jdpower.com/ChromeImageGallery/Expanded/Transparent/640/2008CHE018a_640/2008CHE018a_640_01.png"
                 },
 
                 new Car()
@@ -105,16 +113,18 @@ namespace CarRental.Seed
                     Model = "S4",
                     Year = 2008,
                     DailyRate = 36.2m,
-                    IsAvailable = true
+                    IsAvailable = true,
+                    ImageUrl = "https://cdn.jdpower.com/ChromeImageGallery/Expanded/Transparent/640/2008AUD009a_640/2008AUD009a_640_01.png"
                 },
 
                 new Car()
                 {
                     Brand = "Chevrolet",
                     Model = "Suburban 2500",
-                    Year = 2012,
+                    Year = 2021,
                     DailyRate = 32.2m,
-                    IsAvailable = true
+                    IsAvailable = true,
+                    ImageUrl = "https://s3.us-east-2.amazonaws.com/dealer-inspire-vps-vehicle-images/stock-images/chrome/96f302f03f100dbdf37598e1e69ee4d5.png"
                 },
 
                 new Car()
@@ -123,16 +133,8 @@ namespace CarRental.Seed
                     Model = "Maxima",
                     Year = 2003,
                     DailyRate = 31.3m,
-                    IsAvailable = true
-                },
-
-                new Car()
-                {
-                    Brand = "Chevrolet",
-                    Model = "Suburban 2500",
-                    Year = 2012,
-                    DailyRate = 32.2m,
-                    IsAvailable = true
+                    IsAvailable = true,
+                    ImageUrl = "https://cdn.jdpower.com/ChromeImageGallery/Expanded/Transparent/640/2008NIS007a_640/2008NIS007a_640_01.png"
                 },
 
                 new Car()
@@ -141,7 +143,8 @@ namespace CarRental.Seed
                     Model = "Tundra",
                     Year = 2005,
                     DailyRate = 35.4m,
-                    IsAvailable = true
+                    IsAvailable = true,
+                    ImageUrl = "https://d1ypc8j62c29y8.cloudfront.net/fullsize/5/7/9/796e9ba912ae6ea0a3bed745a1814b0c20889975.png"
                 },
 
                 new Car()
@@ -150,7 +153,8 @@ namespace CarRental.Seed
                     Model = "Armada",
                     Year = 2012,
                     DailyRate = 30.0m,
-                    IsAvailable = true
+                    IsAvailable = true,
+                    ImageUrl = "https://www.cars.com/i/large/in/v2/stock_photos/132b8433-c329-44b4-8516-6687a820147b/7450a15f-a181-474f-bd45-138f65c7a146.png"
                 },
 
                 new Car()
@@ -159,7 +163,8 @@ namespace CarRental.Seed
                     Model = "MDX",
                     Year = 2012,
                     DailyRate = 42.1m,
-                    IsAvailable = true
+                    IsAvailable = true,
+                    ImageUrl = "https://cdn.jdpower.com/Models/640x480/2012-Acura-MDX-AdvancePkg.jpg"
                 },
 
                 new Car()
@@ -168,16 +173,18 @@ namespace CarRental.Seed
                     Model = "Outlander",
                     Year = 2014,
                     DailyRate = 38.8m,
-                    IsAvailable = true
+                    IsAvailable = true,
+                    ImageUrl = "https://cdn.jdpower.com/ChromeImageGallery/Expanded/Transparent/640/2014MIT005a_640/2014MIT005a_640_01.png"
                 },
 
                 new Car()
                 {
                     Brand = "Volkswagen",
-                    Model = "Pointer",
-                    Year = 2007,
-                    DailyRate = 35.3m,
-                    IsAvailable = true
+                    Model = "Tiguan",
+                    Year = 2021,
+                    DailyRate = 41.4m,
+                    IsAvailable = true,
+                    ImageUrl = "https://cdn.jdpower.com/Models/640x480/2021-Volkswagen-Tiguan-SELPremiumR-Line.jpg"
                 },
 
                 new Car()
@@ -186,7 +193,8 @@ namespace CarRental.Seed
                     Model = "TT",
                     Year = 2014,
                     DailyRate = 45.8m,
-                    IsAvailable = true
+                    IsAvailable = true,
+                    ImageUrl = "https://cdn.jdpower.com/ChromeImageGallery/Expanded/Transparent/640/2014AUD013a_640/2014AUD013a_640_01.png"
                 },
             };
 
@@ -202,7 +210,6 @@ namespace CarRental.Seed
                     Name = "Beverly Hills Public Parking",
                     Address = "345 N Beverly Dr, Beverly Hills, CA 90210, United States",
                     Phone = "310-285-2467",
-                    //Cars = new List<Car>()
                 },
 
                 new Location()
@@ -210,7 +217,6 @@ namespace CarRental.Seed
                     Name = "De Lacey Parking Facility",
                     Address = "45 S De Lacey Ave, Pasadena, CA 91105, United States",
                     Phone = "626-356-9725",
-                    //Cars = new List<Car>()
                 },
 
                 new Location()
@@ -218,7 +224,6 @@ namespace CarRental.Seed
                     Name = "Balboa Park Parking",
                     Address = "2168 Pan American E Rd, San Diego, CA 92101, United States",
                     Phone = "619-293-3156",
-                    //Cars = new List<Car>()
                 },
 
                 new Location()
@@ -226,7 +231,6 @@ namespace CarRental.Seed
                     Name = "American West Parking Services",
                     Address = "840 Sutter St, San Francisco, CA 94109, United States",
                     Phone = "415-596-8743",
-                    //Cars = new List<Car>()
                 },
 
                 new Location()
@@ -234,7 +238,6 @@ namespace CarRental.Seed
                     Name = "California Parking",
                     Address = "199 Turk St, San Francisco, CA 94102, United States",
                     Phone = "415-4684-860",
-                    //Cars = new List<Car>()
                 },
             };
 
