@@ -55,6 +55,7 @@ namespace CarRental.Services
             try
             {
                 _context.Update(car);
+                _context.SaveChanges();
             }
             catch
             {

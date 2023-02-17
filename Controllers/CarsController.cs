@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CarRental.Data;
 using CarRental.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CarRental.Controllers
 {
@@ -20,6 +21,7 @@ namespace CarRental.Controllers
         }
 
         // GET: Cars
+        [Authorize]
         public async Task<IActionResult> Index()
         {
               return _context.Cars != null ? 

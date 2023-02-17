@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using CarRental.Data;
 using CarRental.Models;
 using CarRental.Interfaces;
+using CarRental.Services;
 
 namespace CarRental.Controllers
 {
@@ -17,13 +18,16 @@ namespace CarRental.Controllers
         private readonly IInvoiceService _invoiceService;
         private readonly ICarService _carService;
         private readonly IReservationService _reservationService;
+        private readonly ICustomerService _customerSerivce;
 
-        public InvoicesController(ApplicationDbContext context, IInvoiceService invoiceService, ICarService carService, IReservationService reservationService)
+        public InvoicesController(ApplicationDbContext context, IInvoiceService invoiceService, ICarService carService, IReservationService reservationService
+                                , ICustomerService customerSerivce)
         {
             _invoiceService = invoiceService;
             _context = context;
             _carService = carService;
             _reservationService = reservationService;
+            _customerSerivce = customerSerivce;
         }
 
         // GET: Invoices
@@ -33,13 +37,23 @@ namespace CarRental.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
-        public async Task<ActionResult> Generate(Reservation reservation)
+        public async Task<IActionResult> IndexByUserId()
         {
+            var user = _context.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
+            var customer = _customerSerivce.GetCustomerByUserGuidAsync(user.Id).Result;
+
+            var applicationDbContext = _context.Invoices.Include(i => i.Reservation).Where(i => i.Reservation.CustomerId == customer.Id);
+            return View(await applicationDbContext.ToListAsync());
+        }
+
+        public async Task<IActionResult> Generate(int id)
+        {
+            var reservation = _reservationService.GetReservationByIdAsync(id).Result;
             await _invoiceService.GenerateInvoiceAsync(reservation);
             _reservationService.SetIsPaid(reservation, true);
             _carService.SetIsAvailable(_carService.GetCarByIdAsync(reservation.CarId).Result, true);
 
-            return View("Index");
+            return View("IndexByUserId", await _invoiceService.GetAllInvoicesAsync());
         }
 
         // GET: Invoices/Details/5

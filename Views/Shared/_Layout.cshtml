@@ -19,14 +19,17 @@
                     </button>
                     <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                         <ul class="navbar-nav flex-grow-1">
-                        @if (User.Identity.IsAuthenticated)
+                        <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Cars" asp-action="Index">Cars</a>
+                        </li>
+                        @if (User.Identity.IsAuthenticated && !User.IsInRole("Administrators"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-light" asp-area="" asp-controller="Cars" asp-action="Index">Cars</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Reservations" asp-action="IndexByUserId">Reservations</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-light" asp-area="" asp-controller="Reservations" asp-action="IndexByUserId">Reservations</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Invoices" asp-action="IndexByUserId">Invoices</a>
                             </li>
                         }
         

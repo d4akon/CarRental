@@ -63,9 +63,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ReturnLocation.Name)
             </td>
-            <td>
-                <a asp-action="Create" class="btn-success w-10 btn">Generate Invoice</a>
-            </td>
+            @if(DateTime.Now >= item.ReturnDate)
+            {
+                <td>
+                    <a asp-action="Generate" asp-route-id="@item.Id" asp-controller="Invoices" class="btn-success w-10 btn">Generate Invoice</a>
+                </td>
+            }
         </tr>
 }
     </tbody>
